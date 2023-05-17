@@ -8,6 +8,9 @@ const app = express();
 // set view engine
 app.set('view engine', 'ejs');
 
+// static elements
+app.use(express.static('public'));
+
 // connect to mongodb
 const dbURL =
   'mongodb+srv://chmura303:0uzF0g2TYsQoDkuP@apps.5tzatnt.mongodb.net/todo-app?retryWrites=true&w=majority';
