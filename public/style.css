@@ -28,6 +28,102 @@ video {
 }
 
 /* Custom CSS */
+body {
+  background-color: #fff5d7;
+  color: #000;
+  font-family: 'Montserrat', sans-serif;
+}
+
+a {
+  color: #000;
+}
+
+.app-title {
+  font-weight: 900;
+  font-size: 2.5rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-transform: uppercase;
+  color: #ff5e6c;
+  text-align: center;
+  margin: 1.5em 0;
+  font-family: 'Righteous', cursive;
+}
+
+.list-title {
+  padding: 1em 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: 'Righteous', cursive;
+}
+
+.container {
+  max-width: 300px;
+  margin-inline: auto;
+}
+
+#title {
+  background-color: #fff5d7;
+  color: #000;
+  border: none;
+  border-bottom: solid 1px #c6bda0;
+  height: 30.4px;
+}
+
 .btn {
   cursor: pointer;
+  text-transform: uppercase;
+  padding: 0.2rem;
+
+  border: none;
+}
+
+.btn.add {
+  background-color: #59ce8f;
+  border: #59ce8f solid 2px;
+  border-radius: 4px;
+  font-weight: 900;
+  font-family: 'Righteous', cursive;
+  transition-duration: 500ms;
+}
+
+.btn.add:hover {
+  opacity: 0.8;
+}
+
+.btn.add:focus {
+  background-color: #fff;
+  color: #59ce8f;
+  border: #59ce8f solid 2px;
+}
+
+.btn.bin {
+  background-color: transparent;
+}
+
+.todo-title {
+  display: list-item;
+  list-style-type: circle;
+  list-style-position: inside;
+  /* display: inline-block; */
+  line-height: 30px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-hr {
+  width: 95vw;
+  margin-inline: auto;
+  opacity: 0.75;
+}
+
+.footer-p {
+  width: 90vw;
+  margin-inline: auto;
+  opacity: 0.75;
+  padding: 1em 0;
 }

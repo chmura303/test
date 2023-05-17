@@ -3,29 +3,31 @@
   <%- include('./partials/head') %>
 
   <body>
-    <header>
-      <h1>Todo App</h1>
-    </header>
+    <%- include('./partials/header') %>
+
     <main>
-      <div class="container">
-        <form action="/todos" method="POST">
+      <div class="container form">
+        <form id="form" action="/todos" method="POST">
           <input
             type="text"
             name="title"
             id="title"
-            placeholder="Create a new todo:"
+            placeholder="Create a new todo"
+            required
             autofocus
           />
-          <button>Add</button>
+          <button class="btn add">Add!</button>
         </form>
+      </div>
 
-        <h2>Things to do:</h2>
-
+      <div class="container list">
+        <h2 class="list-title">Stuff to do:</h2>
         <% if (todos.length) { %> <% todos.forEach(todo => { %>
-        <h3 class="title"><%= todo.title %></h3>
-        <button class="btn bin" data-doc="<%= todo._id %>">delete</button>
+        <h3 class="todo-title"><%= todo.title %></h3>
+        <button class="btn bin" data-doc="<%= todo._id %>">
+          <img src="/delete.png" alt="" />
+        </button>
         <br />
-        <hr />
         <% }) %> <% } else { %> No todos! <% } %>
       </div>
     </main>
