@@ -47,6 +47,14 @@ app.post('/todos', (req, res) => {
     .catch(err => console.log(err));
 });
 
+app.delete('/todos/:id', (req, res) => {
+  const id = req.params.id;
+
+  Todo.findByIdAndDelete(id)
+    .then(result => res.json({ redirect: '/todos' }))
+    .catch(err => console.log(err));
+});
+
 // 404 page
 app.use((req, res) => {
   res.status(404).render('404', { title: 'Page Not Found' });

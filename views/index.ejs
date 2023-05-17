@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('./partials/head') %>
+
   <body>
     <header>
       <h1>Todo App</h1>
@@ -21,10 +22,27 @@
         <h2>Things to do:</h2>
 
         <% if (todos.length) { %> <% todos.forEach(todo => { %>
-        <h3><%= todo.title %></h3>
+        <h3 class="title"><%= todo.title %></h3>
+        <button class="btn bin" data-doc="<%= todo._id %>">delete</button>
         <% }) %> <% } else { %> No todos! <% } %>
       </div>
     </main>
+
     <%- include('./partials/footer') %>
+
+    <script>
+      const bin = document.querySelector('.bin');
+
+      bin.addEventListener('click', e => {
+        e.preventDefault();
+
+        fetch(`/todos/${bin.dataset.doc}`, {
+          method: 'DELETE',
+        })
+          .then(response => response.json())
+          .then(data => (window.location.href = data.redirect))
+          .catch(err => console.log(err));
+      });
+    </script>
   </body>
 </html>
