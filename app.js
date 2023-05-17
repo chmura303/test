@@ -1,8 +1,12 @@
 const express = require('express');
+const ejs = require('ejs');
 const mongoose = require('mongoose');
 
 // create express app
 const app = express();
+
+// set view engine
+app.set('view engine', 'ejs');
 
 // connect to mongodb
 const dbURL =
@@ -15,5 +19,9 @@ mongoose
 
 // routes
 app.get('/', (req, res) => {
-  res.send('hello');
+  res.render('index', { title: 'Home' });
+});
+
+app.use((req, res) => {
+  res.status(404).render('404', { title: 'Page Not Found' });
 });
