@@ -24,6 +24,8 @@
         <% if (todos.length) { %> <% todos.forEach(todo => { %>
         <h3 class="title"><%= todo.title %></h3>
         <button class="btn bin" data-doc="<%= todo._id %>">delete</button>
+        <br />
+        <hr />
         <% }) %> <% } else { %> No todos! <% } %>
       </div>
     </main>
