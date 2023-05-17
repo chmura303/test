@@ -1,12 +1,17 @@
 const express = require('express');
-const ejs = require('ejs');
+const morgan = require('morgan');
 const mongoose = require('mongoose');
+const Todo = require('./models/todo');
 
 // create express app
 const app = express();
 
 // set view engine
 app.set('view engine', 'ejs');
+
+// middleware
+app.use(morgan('dev'));
+app.use(express.urlencoded({ extended: true }));
 
 // static elements
 app.use(express.static('public'));
@@ -22,9 +27,27 @@ mongoose
 
 // routes
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Home' });
+  res.redirect('/todos');
 });
 
+// todo routes
+app.get('/todos', (req, res) => {
+  Todo.find()
+    .sort({ createdAt: -1 })
+    .then(result => res.render('index', { title: 'Home', todos: result }))
+    .catch(err => console.log(err));
+});
+
+app.post('/todos', (req, res) => {
+  const todo = new Todo(req.body);
+
+  todo
+    .save()
+    .then(result => res.redirect('/todos'))
+    .catch(err => console.log(err));
+});
+
+// 404 page
 app.use((req, res) => {
   res.status(404).render('404', { title: 'Page Not Found' });
 });

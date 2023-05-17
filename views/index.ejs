@@ -2,9 +2,28 @@
 <html lang="en">
   <%- include('./partials/head') %>
   <body>
-    <main>
+    <header>
       <h1>Todo App</h1>
-      <p>index.ejs</p>
+    </header>
+    <main>
+      <div class="container">
+        <form action="/todos" method="POST">
+          <input
+            type="text"
+            name="title"
+            id="title"
+            placeholder="Create a new todo:"
+            autofocus
+          />
+          <button>Add</button>
+        </form>
+
+        <h2>Things to do:</h2>
+
+        <% if (todos.length) { %> <% todos.forEach(todo => { %>
+        <h3><%= todo.title %></h3>
+        <% }) %> <% } else { %> No todos! <% } %>
+      </div>
     </main>
     <%- include('./partials/footer') %>
   </body>
